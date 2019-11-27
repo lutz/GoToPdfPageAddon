@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoToPdfPage", "GoToPdfPage\GoToPdfPage.csproj", "{751F76DF-7934-4410-8276-E165931AF486}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoToPdfPageAddon", "GoToPdfPageAddon\GoToPdfPage.csproj", "{751F76DF-7934-4410-8276-E165931AF486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
