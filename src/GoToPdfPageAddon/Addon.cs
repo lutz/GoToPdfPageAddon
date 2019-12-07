@@ -8,7 +8,7 @@ using GoToPdfPage.Properties;
 
 namespace GoToPdfPage
 {
-    public class PDFPageJumpAddon : CitaviAddOn<MainForm>
+    public class Addon : CitaviAddOn<MainForm>
     {
         #region Constants
 
