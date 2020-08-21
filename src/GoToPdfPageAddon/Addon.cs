@@ -16,7 +16,6 @@ namespace GoToPdfPage
 
         #endregion
 
-
         #region Eventhandlers
 
         public override void OnApplicationIdle(MainForm mainForm)
