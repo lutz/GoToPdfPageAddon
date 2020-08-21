@@ -1,10 +1,10 @@
-﻿using System;
-using SwissAcademic.Citavi.Shell;
-using System.Windows.Forms;
-using SwissAcademic.Controls;
-using SwissAcademic.Citavi.Shell.Controls.Preview;
+﻿using GoToPdfPage.Properties;
 using SwissAcademic.Citavi.Controls.Wpf;
-using GoToPdfPage.Properties;
+using SwissAcademic.Citavi.Shell;
+using SwissAcademic.Citavi.Shell.Controls.Preview;
+using SwissAcademic.Controls;
+using System;
+using System.Windows.Forms;
 
 namespace GoToPdfPage
 {
@@ -16,33 +16,31 @@ namespace GoToPdfPage
 
         #endregion
 
-        #region Fields
-
-        CommandbarButton _button;
-
-        #endregion
 
         #region Eventhandlers
 
         public override void OnApplicationIdle(MainForm mainForm)
         {
-            if (_button != null)
-            {
-                _button.Tool.SharedProps.Enabled = mainForm.PreviewControl.ActiveLocation?.Address.Resolve().GetLocalPathSafe().EndsWith("pdf") ?? false;
-            }
+            var button = mainForm
+                            .GetMainCommandbarManager()
+                            .GetReferenceEditorCommandbar(MainFormReferenceEditorCommandbarId.Menu)
+                            .GetCommandbarMenu(MainFormReferenceEditorCommandbarMenuId.View)
+                            .GetCommandbarButton(PDFPageJumpAddon_Command);
 
-            base.OnApplicationIdle(mainForm);
+            if (button != null)
+            {
+                button.Tool.SharedProps.Enabled = mainForm.PreviewControl.ActiveLocation?.Address.Resolve().GetLocalPathSafe().EndsWith("pdf") ?? false;
+            }
         }
 
         public override void OnHostingFormLoaded(MainForm mainForm)
         {
-            _button = mainForm.GetMainCommandbarManager()
+            var button = mainForm.GetMainCommandbarManager()
                               .GetReferenceEditorCommandbar(MainFormReferenceEditorCommandbarId.Menu)
                               .GetCommandbarMenu(MainFormReferenceEditorCommandbarMenuId.View)
                               .AddCommandbarButton(PDFPageJumpAddon_Command, Strings.Command, CommandbarItemStyle.Text);
-            _button.Shortcut = Shortcut.CtrlJ;
-            _button.Visible = false;
-            base.OnHostingFormLoaded(mainForm);
+            button.Shortcut = Shortcut.CtrlJ;
+            button.Visible = false;
         }
 
         public override void OnBeforePerformingCommand(MainForm mainForm, BeforePerformingCommandEventArgs e)
@@ -61,15 +59,20 @@ namespace GoToPdfPage
 
                 e.Handled = true;
             }
-
-            base.OnBeforePerformingCommand(mainForm, e);
         }
 
-        public override void OnLocalizing(MainForm form)
+        public override void OnLocalizing(MainForm mainForm)
         {
-            if (_button != null) _button.Text = Strings.Command;
+            var button = mainForm
+                            .GetMainCommandbarManager()
+                            .GetReferenceEditorCommandbar(MainFormReferenceEditorCommandbarId.Menu)
+                            .GetCommandbarMenu(MainFormReferenceEditorCommandbarMenuId.View)
+                            .GetCommandbarButton(PDFPageJumpAddon_Command);
 
-            base.OnLocalizing(form);
+            if (button != null)
+            {
+                button.Text = Strings.Command;
+            }
         }
 
         #endregion
