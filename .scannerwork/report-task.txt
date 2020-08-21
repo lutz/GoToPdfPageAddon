@@ -1,7 +1,0 @@
-organization=lutz
-projectKey=lutz_GoToPdfPageAddon
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.8111
-dashboardUrl=https://sonarcloud.io/dashboard?id=lutz_GoToPdfPageAddon
-ceTaskId=AXIsGoAH3CfkszmgB0wR
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXIsGoAH3CfkszmgB0wR
